@@ -1,0 +1,8 @@
+{% load static %}
+{% if artist.profile_image %}
+<img src="{{ artist.profile_image.url }}" alt="{{ artist.stage_name }}">
+{% endif %}
+<h1>{{ artist.stage_name }}</h1>
+<p>{{ artist.genre }}</p>
+<p>{{ artist.bio }}</p>
+

@@ -1,0 +1,10 @@
+{% load static %}
+<h1>Bookings</h1>
+{% for booking in bookings %}
+<div>
+    <h3>{{ booking.customer_name }}</h3>
+    <p>{{ booking.event_location }}</p>
+    <p>{{ booking.event_date }}</p>
+    <p>Status: {{ booking.status }}</p>
+</div>
+{% endfor %}

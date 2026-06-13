@@ -1,0 +1,7 @@
+{% load static % }
+<h1>create Account</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">signup</button>
+</form>

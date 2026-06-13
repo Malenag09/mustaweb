@@ -1,0 +1,11 @@
+{% laod static %}
+{% for artist in artists %}
+{% if artist.profile_image %}
+<img src="{{ artist.profile_image.url }}" width="150" height="200">
+{% endif %}
+<h3>{{ artist.stage_name }}</h3>
+<p>{{ artist.genre }}</p>
+<a href="{% url 'artist_detail' artist.id %}">view profile</a>
+{% endfor %}
+
+<a href="https://wa.me{{ artist.whatsapp_number }}" target="_blank">Book {{ artist.stage_name }}</a>

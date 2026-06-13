@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            BIGMUSTA
+        </title>
+        <link rel="stylesheet" href="/static/style.css">
+        <link rel="icon" type="image/x-icon" href="{% static 'images/musta.ico' %}">
+         <meta charset="UTF-8">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+     <style>
+     body{
+            color:black;
+            background:linear-gradient( 50deg, #005, #cff, #d4d4d4,#ff00bf );}
+    </style>
+            </head>
+    <body>
+        <nav>
+                  <nav class="navbar">
+<h1 style="color:blue; text-align: left;font-size: xx-large;background-color: aliceblue;text-decoration: underline;"> BIG MUSTA (The Official WebSite)</h1>
+            <a href="{% url 'song_list' %}">
+                <img src="{% static 'images/musta.jpg' %}" height="120px" width="120" alt="logo">
+            </a>
+            <div>
+                
+ <a href="{% url 'song_list' %}" style="text-align: left; padding:20px;color:2px solid #cff;border:12px 15px 12px 15px solid #ccc;color:red; font-size:x-large;">HOME</a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" style="color:#ff00bf;font-size:larger">LOGOUT</a>
+                <a href="{% url 'artist_list' %}"style="text-align: left; color:red;font-size:larger;">ARTIST</a>
+                {% else %}
+                <small>have an account, </small><a href="{% url 'login' %}">Login</a> <small>with your credetials</small>
+                <small>Or don't have an account?</small> <a href="{% url 'signup' %}"><important>signup</important></a> <small> to have one</small>
+                {% endif %}
+            </div>
+        </nav>
+        <div>
+            {% block content %} {% endblock %}
+
+            <div class="p-4">
+              <h4 style="color:red;background-color:white; text-align: left; font-size: xx-large; font-family:'Times New Roman', Times, serif;">Elsewhere Find Big Musta on :</h4>
+              <ol class="list-unstyled">
+                <li><a href="https://www.youtube.com/@BigMusta" style="color:red;border:1px solid #ccc;font-size:xx-large; background:#cff">youtube</a></li>
+               <br>
+                <li><a href="https://wa.me/{{ artist.whatsapp_link }}" target="_blank" style="color:red;border:1px solid #ccc; font-size:xx-large;background:#cff">whatsapp</a></li>
+              </ol>
+            </div>
+     <p style="text-align: center; color:red;font-size: larger; background-color: white;">&copy; 2026 Bigmusta, Inc. All rights reserved.</p>
+    </body>
+</html>
+        </div>
+    </body>
+</html>

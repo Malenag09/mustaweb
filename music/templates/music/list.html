@@ -1,0 +1,41 @@
+{% extends 'music/base.html' %}
+{% load static %}
+{% block content %}
+       </a>
+        <form method="GET" action="{% url 'song_list' %}" style="text-align: left; text-decoration: none;width:70%; border-radius: 30%;">
+    <input type="text" name="q" placeholder="search songs" style="background-color:white;color:red;border-radius:20%;font-size: x-large;" value="{{ query }}">
+    <button type="submit" style="color:red; font-display: block;font-size: large;width: 150px;border-radius: 20%;">search</button>
+    
+<h3 style=" color:deeppink;
+font-style:oblique;
+padding:22px;font-size: x-large;
+    background:white;padding:35px;
+    text-decoration: none;
+    text-align: left;
+    margin-inline-start: var(red);
+"> <strong>Big Musta is a passionate and creative artist who expresses emotions and stories through music. <br>
+With a unique style and sound , he connects deeply with his listeners by blending meanignful lyrics, <br>
+and captivating melodies.<br>
+His work reflects personal experiences, culture and inspiration, making each song authentic and relatable. <br>
+Dedicated to growth and originality, Big Musta continues to evolve, using his platform to share his voice and leaves 
+<br>a lasting impact on his audience.</strong></h3>
+
+<h3 style="text-align: center;color:red;font-size: xx-large;">LATEST SONGS</h3>
+</form>
+{% for song in songs %}
+<div>
+    <h3> {{ song.title }} - {{ song.artist }}</h3>
+    <img src="{{ song.cover_image.url }}" width="150" height="150">
+    <hr>
+    <audio controls>
+        <source src="{{ song.audio_file.url }}" type="audio/mpeg">
+    </audio>
+     <a href="{{ song.audio_file.url }}"download style="text-align: left; color:red;font-size:x-large;">DOWNLOAD - {{song.title}}</a>
+    <br>{% endfor %}
+    {% if user.is_authenticated and user.is_staff %}
+    <a href="{% url 'upload_song' %}" style="text-align: center; color:red;font-size: larger; background-color: white;">UPLOAD A SONG</a>
+</div>
+{% endif %}
+</form>
+<a href="{% url 'artist_list' %}"style="text-align: left; color:red;font-size:x-large;">ARTIST</a>
+{% endblock %}

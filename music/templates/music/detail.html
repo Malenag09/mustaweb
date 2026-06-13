@@ -1,0 +1,8 @@
+{% load static %}
+<h3>{{ song.title }} - {{ song.artist }}</h3>
+<img src="{{ song.cover_image.url }}" width="200">
+<audio controls>
+    <source src="{{ song.audio_file.url }}" type="audio/mpeg">
+</audio>
+<h3>Lyrics</h3>
+<p>{{ song.lyrics }}</p>

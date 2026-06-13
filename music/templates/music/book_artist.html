@@ -1,0 +1,9 @@
+{% extends 'music/base.html' %}
+{% block content %}
+<h1>Book {{ artist.stage_name }}</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">send booking request</button>
+</form>
+{% endblock %}
